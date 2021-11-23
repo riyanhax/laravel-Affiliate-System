@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\apiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +18,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('home/{reffer_code}',function ($code)
+{
+    if(!is_null($code)){
+        return $code;
+    }else{
+        return "nothing happend";
+    }
+
+});
+
+// Route::get('home',function ()
+// {
+//     return "iam without code";
+// });
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+Route::post('check-username', [apiController::class, 'check_username'])->name('check-username');

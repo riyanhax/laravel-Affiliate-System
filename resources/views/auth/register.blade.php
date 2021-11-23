@@ -19,6 +19,13 @@
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
+
+            <div class="mt-4">
+                <x-jet-label for="username" value="{{ __('Username') }}"  /> <span id="errorMessageUsername" style="color:red"> Username Already Taken</span>
+                <x-jet-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required />
+            </div>
+
+
             <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
@@ -51,10 +58,53 @@
                     {{ __('Already registered?') }}
                 </a>
 
-                <x-jet-button class="ml-4">
+                <x-jet-button class="ml-4" id="registerSubmitButton" disabled>
                     {{ __('Register') }}
                 </x-jet-button>
             </div>
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>
+
+<form id="RegisterHiddenForm" method="POST" hidden>
+    @csrf
+    <input type="text" name="username" id="input_hidden_username">
+</form>
+
+<script>
+
+    $(document).ready(function(){
+
+        $('#errorMessageUsername').hide();
+
+        $("#username").on("input", function(){
+
+            const value = $('#username').val();
+            $('#input_hidden_username').val(value);
+
+            const route =  '{{ route('check-username') }}';
+            const data = $('#RegisterHiddenForm').serialize();
+
+            $.ajax({
+                url: route,
+                type: "Post",
+                data: data,
+               success: function (data) {
+                if(data == 'available'){
+                    $('#registerSubmitButton').removeAttr("disabled");
+                    $('#errorMessageUsername').hide();
+                } else {
+                    $('#errorMessageUsername').show();
+                    $('#registerSubmitButton').attr("disabled", 'disabled');
+                }
+            }, error: function(error){
+                console.log(error);
+            }
+            });
+        });
+    });
+
+
+</script>
+
+
