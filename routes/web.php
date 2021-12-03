@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('userdeshboard', function(){
+    return view('Affiliator_dashboard');
+});
+
 Route::get('home/{reffer_code}',function ($code)
 {
     if(!is_null($code)){
