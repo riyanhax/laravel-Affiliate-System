@@ -3,6 +3,8 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use App\Models\userHasChild;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -23,18 +25,28 @@ class CreateNewUser implements CreatesNewUsers
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'username' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
 
-        return User::create([
+        $uniqueId = User::orderBy('id', 'DESC')->first()->id;
+        $uniqueCode = date('Y-m H:i') . "_" . $uniqueId;
+
+        $user = User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-            'role_id' => 4,
-            'username' => $input['username']
+            'role_id' => 2,
+            'reffer_code' => $uniqueCode
         ]);
+
+        if(!is_null($input['reffer_code'])){
+            $fromReffer = User::where('reffer_code', $input['reffer_code'])->first();
+            $userHasChildren = new userHasChild;
+            $userHasChildren->from_refferd_user_id = $fromReffer->id;
+            $userHasChildren->child_user_id = $user->id;
+            $userHasChildren->save();
+        }
     }
 }
