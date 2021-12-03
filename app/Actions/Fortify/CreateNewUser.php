@@ -4,6 +4,7 @@ namespace App\Actions\Fortify;
 
 use App\Models\User;
 use App\Models\userHasChild;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -22,6 +23,8 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
+
+
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -30,23 +33,36 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
 
 
-        $uniqueId = User::orderBy('id', 'DESC')->first()->id;
-        $uniqueCode = date('Y-m H:i') . "_" . $uniqueId;
-
-        $user = User::create([
-            'name' => $input['name'],
-            'email' => $input['email'],
-            'password' => Hash::make($input['password']),
-            'role_id' => 2,
-            'reffer_code' => $uniqueCode
-        ]);
+        $user = new User;
+        $user->name = $input['name'];
+        $user->email = $input['email'];
+        $user->password = Hash::make($input['password']);
+        $user->role_id = 2;
+        $user->save();
+        
+        $user->reffer_code = $user->id . $this->generateUniqueNumber();
+        $user->save();
 
         if(!is_null($input['reffer_code'])){
+
             $fromReffer = User::where('reffer_code', $input['reffer_code'])->first();
+
             $userHasChildren = new userHasChild;
             $userHasChildren->from_refferd_user_id = $fromReffer->id;
             $userHasChildren->child_user_id = $user->id;
             $userHasChildren->save();
         }
+
+        return $user;
+
     }
+    public function generateUniqueNumber()
+    {
+        do {
+            $code = random_int(100000, 999999);
+        } while (User::where("reffer_code", "=", $code)->first());
+  
+        return $code;
+    }
+
 }
