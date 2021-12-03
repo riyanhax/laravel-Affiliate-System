@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\apiController;
+use App\Http\Controllers\indexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,11 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
-Route::get('userdeshboard', function(){
-    return view('Affiliator_dashboard');
-});
 
 Route::get('home/{reffer_code}',function ($code)
 {
@@ -32,16 +30,10 @@ Route::get('home/{reffer_code}',function ($code)
 
 });
 
-// Route::get('home',function ()
-// {
-//     return "iam without code";
-// });
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/dashboard', [indexController::class, 'index'])->name('dashboard');
+});
 
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-
-Route::post('check-username', [apiController::class, 'check_username'])->name('check-username');
