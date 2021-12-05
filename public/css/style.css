@@ -3997,7 +3997,7 @@ body::-webkit-scrollbar {
 /******** main content css here *********/
 /* line 2, H:/admin_project/hospital/scss/_main_content.scss */
 .main_content {
-  padding-left: 270px;
+  /* padding-left: 270px; */
   width: 100%;
   padding-top: 0px !important;
   transition: .5s;
@@ -4885,7 +4885,7 @@ body::-webkit-scrollbar {
   padding-bottom: 40px;
   padding-top: 6px;
   background: transparent;
-  padding-left: 270px;
+  /* padding-left: 270px; */
   position: absolute;
   left: 0;
   right: 0;
