@@ -20,6 +20,9 @@ Route::get('/', function () {
 Route::get('/profile', function () {
     return view('deshboard');
 });
+Route::get('/home', function () {
+    return view('home');
+});
 
 Route::get('userdeshboard', function(){
     return view('Affiliator_dashboard');
