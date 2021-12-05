@@ -39,7 +39,7 @@
 
 
    <div class="userName container py-3">
-       <span class="d-block p-3 bg-primary text-white rounded">Md Omuk miya</span>
+       <span class="d-block p-3 bg-primary text-white rounded"> {{ auth()->user()->name }}</span>
 
    </div>
 
@@ -79,9 +79,10 @@
     <div class="col-md-4">
         <p>User Reffer Link</p>
 
+      
     </div>
     <div class="col-md-7">
-        https://pipsscalper.com/
+        {{ route('home')  . "/" . auth()->user()->reffer_code }}
     </div>
 </div>
     </div>
