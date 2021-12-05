@@ -17,7 +17,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-})->name('home');
+
+});
+Route::get('/profile', function () {
+    return view('deshboard');
+});
+Route::get('/home', function () {
+    return view('home');
+});
+
 
 
 Route::get('home/{reffer_code}',function ($code)
