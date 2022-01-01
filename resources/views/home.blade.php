@@ -18,16 +18,17 @@
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+
     <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -61,18 +62,19 @@
         <div class="container">
             <div class="row gy-4">
 
-                <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-                    <p>"Developed using 3 most powerful indicators, when you connect all them in one strategy, things are really
-                        simple"</p>
-                    <h1>GET A REAL PROFITABLE TRADING ROBOT!</h1>
-                    <h2>It's an INCREDIBLE Forex EA.
+                <div class="col-lg-7 order-2 order-lg-1 d-flex flex-column justify-content-center">
 
-                        Try it now! "The Best Forex EA 2021, Very Powerful and Very Accurate" </h2>
+                    <h1>GET A REAL PROFITABLE TRADING ROBOT!</h1>
+                     <p>"Developed using 3 most powerful indicators, when you connect all them in one strategy, things are really
+                         simple" <br>
+                        It's an INCREDIBLE Forex EA.
+
+                        Try it now! "The Best Forex EA 2021, Very Powerful and Very Accurate"</p>
                     <div>
                         <a href="#about" class="btn-get-started scrollto">Get Started</a>
                     </div>
                 </div>
-                <div class="col-lg-6 order-1 order-lg-2 hero-img">
+                <div class="col-lg-5 order-1 order-lg-2 hero-img">
                     <img src="assets/img/nfxhero_imga.png" class="img-fluid animated" alt="">
                 </div>
             </div>

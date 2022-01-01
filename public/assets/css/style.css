@@ -8,13 +8,16 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@400;700&family=Roboto:wght@400;500;700;900&display=swap');
+
+
 :root {
   --mainTextColor: #2b044d;
   --white: #ffffff;
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+      font-family: 'Poppins', sans-serif;
   color: #212529;
 }
 
@@ -29,7 +32,7 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6, .font-primary {
-  font-family: "Raleway", sans-serif;
+   font-family: 'Poppins', sans-serif;
 }
 p{
   color: var(--mainTextColor);
@@ -300,14 +303,15 @@ p{
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 70vh;
+  height: 100vh;
   background: #fef8f5;
   border-bottom: 2px solid #fcebe3;
   margin: 72px 0 -72px 0;
 }
 #hero h1 {
+font-family: 'Poppins', sans-serif;
   margin: 0;
-  font-size: 48px;
+  font-size: 50px;
   font-weight: 700;
   line-height: 56px;
   color: var(--mainTextColor);
@@ -315,13 +319,15 @@ p{
 #hero h2 {
   color: var(--mainTextColor);
   margin: 15px 0 0 0;
-  font-size: 22px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.8;
 }
 #hero p{
   font-size: 16px;
   color: var(--mainTextColor);
-  font-weight: 600;
+  font-weight: 500;
+  line-height: 1.8;
 }
 #hero .btn-get-started {
   font-family: "Raleway", sans-serif;
