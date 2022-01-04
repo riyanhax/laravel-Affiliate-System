@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\api\apiController;
 use App\Http\Controllers\indexController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,33 +15,38 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// --------------------------   public routes -------------------------
 
-});
-Route::get('/profile', function () {
-    return view('deshboard');
-});
-Route::get('/home', function () {
-    return view('home');
-});
+
+Route::get('order', [OrderController::class, 'orderProduct'])->name('order');
+Route::post('order-confirmation', [OrderController::class, 'store'])->name('order-confirmation');
 
 
 
-Route::get('home/{reffer_code}',function ($code)
-{
-    if(!is_null($code)){
-        return $code;
-    }else{
-        return "nothing happend";
-    }
 
-});
+
+
+
+// ---------------------------  Protected Routes ---------------------------------
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
+    
+    Route::get('/profile', function () {
+        return view('deshboard');
+    });
+
     Route::get('/dashboard', [indexController::class, 'index'])->name('dashboard');
+
 });
+
+
+
+// ---------------------------- Never Touch this route ------------------------------------
+Route::get('/',[indexController::class, 'user'])->name('home');
+Route::get('/{reffer_code}',[indexController::class, 'user']);
+
+//---------------------
 
 
 

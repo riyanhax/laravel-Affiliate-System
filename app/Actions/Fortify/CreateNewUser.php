@@ -44,9 +44,7 @@ class CreateNewUser implements CreatesNewUsers
         $user->save();
 
         if(!is_null($input['reffer_code'])){
-
             $fromReffer = User::where('reffer_code', $input['reffer_code'])->first();
-
             $userHasChildren = new userHasChild;
             $userHasChildren->from_refferd_user_id = $fromReffer->id;
             $userHasChildren->child_user_id = $user->id;
@@ -59,7 +57,7 @@ class CreateNewUser implements CreatesNewUsers
     public function generateUniqueNumber()
     {
         do {
-            $code = random_int(100000, 999999);
+            $code = random_int(1000000000, 99999999999);
         } while (User::where("reffer_code", "=", $code)->first());
   
         return $code;

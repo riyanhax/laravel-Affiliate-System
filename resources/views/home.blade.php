@@ -48,7 +48,7 @@
                 <ul>
 
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                    <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+                    <li><a class="getstarted scrollto" href="{{ route('order') }}"> Order Now</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -71,7 +71,7 @@
 
                         Try it now! "The Best Forex EA 2021, Very Powerful and Very Accurate"</p>
                     <div>
-                        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+                        <a href="{{ route('order') }}" class="btn-get-started scrollto">Order Now</a>
                     </div>
                 </div>
                 <div class="col-lg-5 order-1 order-lg-2 hero-img">
@@ -151,8 +151,6 @@
                             Well...and this is the best lesson you will ever learn in Forex robot trading:
                         </p>
 
-
-
                         <!-- <div class="row">
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
                 <i class="bx bx-receipt"></i>
@@ -165,6 +163,7 @@
                 <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
               </div>
             </div> -->
+
                     </div>
                 </div>
 
@@ -517,7 +516,7 @@
 
                 <div class="section-title">
                     <h2>Contact Us</h2>
-                    <p>Contact us the get started</p>
+                    <p>Contact us To get started</p>
                 </div>
 
                 <div class="row">
@@ -542,7 +541,7 @@
                                 <p>+1 5589 55488 55s</p>
                             </div>
 
-                            <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe> -->
+                            
                         </div>
 
                     </div>
@@ -608,10 +607,13 @@
             </div>
             <div class="credits">
 
-                Designed by <a href="https://bootstrapmade.com/">nfx</a>
+                Designed by <a href="https://sourovahmad.netlify.app">Sourov/Arif</a>
             </div>
         </div>
     </footer><!-- End Footer -->
+
+
+    <form action="{{ route('order') }}"></form>
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -625,6 +627,14 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+
+
+    <script>
+        window.onload = function(){
+            const refferCode = @json($refferCode);
+            localStorage.setItem('refferCode', refferCode);
+        }
+    </script>
 
 </body>
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserWorkAnalysesTable extends Migration
+class CreateCustomersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateUserWorkAnalysesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_work_analyses', function (Blueprint $table) {
+        Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->integer('total_clicks');
-            $table->integer('total_orders');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateUserWorkAnalysesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_work_analyses');
+        Schema::dropIfExists('customers');
     }
 }

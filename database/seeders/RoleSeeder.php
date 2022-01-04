@@ -38,7 +38,7 @@ class RoleSeeder extends Seeder
                 "name" => "affiliator",
                 "email" => "affliator@gmail.com",
                 "password" => bcrypt(1234),
-                "reffer_code" => "2021_1",
+                "reffer_code" => "2022",
                 "role_id" => 2,
             ],
             [
@@ -48,6 +48,12 @@ class RoleSeeder extends Seeder
                 "reffer_code" => null,
                 "role_id" => 3,
             ],
+        ]);
+
+        DB::table('user_work_analyses')->insert([
+            'user_id' => 2,
+            'total_clicks' => 1,
+            'total_orders' => 0
         ]);
     }
 }
