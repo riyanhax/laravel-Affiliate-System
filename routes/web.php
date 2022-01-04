@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\SuperAdminController;
+use App\Http\Middleware\ensureUserSuperAdmin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,26 +25,35 @@ Route::post('order-confirmation', [OrderController::class, 'store'])->name('orde
 
 
 
-
-
-
-
 // ---------------------------  Protected Routes ---------------------------------
 
-
 Route::middleware(['auth:sanctum'])->group(function () {
-    
-    Route::get('/profile', function () {
-        return view('deshboard');
-    });
 
-    Route::get('/dashboard', [indexController::class, 'index'])->name('dashboard');
+
+    
+    Route::get('dashboard', function () {
+        return view('deshboard');
+    })->name('dashboard');
+
+    // Route::get('/dashboard', [indexController::class, 'index'])->name('dashboard');
+
+
+
+
+
+    // super admin routes 
+
+    Route::middleware(ensureUserSuperAdmin::class)->group(function () {
+        Route::get('super-admin', [SuperAdminController::class, 'index'])->name('superAdmin');
+        Route::get('pending-orders', [SuperAdminController::class, 'pendingOrders'])->name('pendingOrders');
+        Route::get('all-orders', [SuperAdminController::class, 'allOrders'])->name('allOrders');
+    });
 
 });
 
 
 
-// ---------------------------- Never Touch this route ------------------------------------
+// ----------------------------Never Touch this route ------------------------------------
 Route::get('/',[indexController::class, 'user'])->name('home');
 Route::get('/{reffer_code}',[indexController::class, 'user']);
 

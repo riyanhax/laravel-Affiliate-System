@@ -50,13 +50,6 @@
 
 
 
-    <!-- main content part here -->
-
-    <!-- sidebar  -->
-    <!-- sidebar part here -->
-
-    <!-- sidebar part end -->
-    <!--/ sidebar  -->
 
 
     <section class="main_content dashboard_part">
@@ -107,6 +100,9 @@
                 </div>
             </div>
         </div>
+
+
+
         <!--/ menu  -->
         <div class="main_content_iner ">
             <div class="container-fluid p-0">

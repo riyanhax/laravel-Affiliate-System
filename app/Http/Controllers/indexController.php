@@ -11,7 +11,7 @@ class indexController extends Controller
     public function index()
     {
         $affiliatorChilds = userHasChild::where('from_refferd_user_id', auth()->user()->id)->get();
-        return view('Affiliator_dashboard',compact('affiliatorChilds'));
+        return view('dashboard',compact('affiliatorChilds'));
     }
 
     public function user($refferCode = null)

@@ -57,7 +57,7 @@ class CreateNewUser implements CreatesNewUsers
     public function generateUniqueNumber()
     {
         do {
-            $code = random_int(1000000000, 99999999999);
+            $code = random_int(100000, 9999999);
         } while (User::where("reffer_code", "=", $code)->first());
   
         return $code;

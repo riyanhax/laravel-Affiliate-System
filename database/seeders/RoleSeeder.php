@@ -21,9 +21,6 @@ class RoleSeeder extends Seeder
             [
                 "role" => "affiliator"
             ],
-            [
-                "role" => "user"
-            ],
         ]);
 
         DB::table('users')->insert([
@@ -31,7 +28,7 @@ class RoleSeeder extends Seeder
                 "name" => "Super Admin",
                 "email" => "superadmin@gmail.com",
                 "password" => bcrypt(1234),
-                "reffer_code" => null,
+                "reffer_code" => 1,
                 "role_id" => 1,
             ],
             [
@@ -40,14 +37,7 @@ class RoleSeeder extends Seeder
                 "password" => bcrypt(1234),
                 "reffer_code" => "2022",
                 "role_id" => 2,
-            ],
-            [
-                "name" => "user",
-                "email" => "user@gmail.com",
-                "password" => bcrypt(1234),
-                "reffer_code" => null,
-                "role_id" => 3,
-            ],
+            ]
         ]);
 
         DB::table('user_work_analyses')->insert([

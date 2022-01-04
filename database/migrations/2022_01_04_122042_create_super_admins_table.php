@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserHasOrdersTable extends Migration
+class CreateSuperAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateUserHasOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_has_orders', function (Blueprint $table) {
+        Schema::create('super_admins', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('order_id');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ class CreateUserHasOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_has_orders');
+        Schema::dropIfExists('super_admins');
     }
 }

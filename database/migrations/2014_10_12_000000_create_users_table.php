@@ -19,7 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('role_id')->default(2);
+            $table->boolean('affiliator_status')->default(false);
             $table->string('reffer_code')->nullable();
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
